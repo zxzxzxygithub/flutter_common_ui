@@ -11,6 +11,16 @@ class _ColoredRichTextState extends State<ColoredRichText> {
     var toUserName = '花花';
     toUserName = null;
     var content = '一款优雅高效的在线文档编辑与协一款优雅高效的在线文档编辑与协一款优雅高效的在线文档编辑与协一款优雅高效的在线文档编辑与协';
+    StatelessWidget finalWidget = getShowContentWidget(toUserName, content);
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("rich text"),
+        ),
+        body: finalWidget
+    );
+  }
+
+  StatelessWidget getShowContentWidget(String toUserName, String content) {
     var hasToUserNameText = Container(
           color: Colors.white,
           child: RichText(
@@ -34,13 +44,7 @@ class _ColoredRichTextState extends State<ColoredRichText> {
           ),
         );
     var commonText = Text(content, style: TextStyle(color: Color(0xFF333333), fontSize: 14));
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("rich text"),
-        ),
-        body: getShowContent(toUserName, commonText, hasToUserNameText)
-    );
+    var finalWidget = toUserName == null ? commonText :hasToUserNameText;
+    return finalWidget;
   }
-
-  StatelessWidget getShowContent(String toUserName, Text commonText, Container hasToUserNameText) => toUserName == null ? commonText :hasToUserNameText;
 }
