@@ -8,13 +8,20 @@ class ListviewLoadMore extends StatefulWidget {
 }
 
 class _ListviewLoadMoreState extends State<ListviewLoadMore> {
-  List<int> items = List.generate(10, (i) => i);
+//  List<int> items = List.generate(10, (i) => i);
+  List<int> items = List<int>();
   ScrollController _scrollController = new ScrollController();
   bool isPerformingRequest = false;
+
+  Widget get emptyView => Center(child: Text("暂无数据",style: TextStyle(color: Colors.red,fontSize: 18),),);
 
   @override
   void initState() {
     super.initState();
+    // 延迟一秒加载
+    new Future.delayed(Duration(seconds: 1), () {
+      _getMoreData();
+    });
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
@@ -33,7 +40,7 @@ class _ListviewLoadMoreState extends State<ListviewLoadMore> {
     if (!isPerformingRequest) {
       setState(() => isPerformingRequest = true);
       List<int> newEntries = await fakeRequest(
-          items.length, items.length + 10); //returns empty list
+          items.length, items.length + 10);
       if (newEntries.isEmpty) {
         double edge = 50.0;
         double offsetFromBottom = _scrollController.position.maxScrollExtent -
@@ -66,13 +73,17 @@ class _ListviewLoadMoreState extends State<ListviewLoadMore> {
 
   @override
   Widget build(BuildContext context) {
+    var itemCount = items.length + 1;
     return new Scaffold(
       appBar: AppBar(
         title: Text("Infinite ListView"),
       ),
       body: ListView.builder(
-        itemCount: items.length + 1,
+        itemCount: itemCount,
         itemBuilder: (context, index) {
+          if(index==0&&itemCount==1){
+            return emptyView;
+          }
           if (index == items.length) {
             return _buildProgressIndicator();
           } else {
