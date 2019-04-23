@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'listview/loadmore.dart';
+import 'richtext/differentcolortext.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: ListviewLoadMore(),
+      home: ColoredRichText(),
     );
   }
 }
