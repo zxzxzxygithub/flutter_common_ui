@@ -41,7 +41,7 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
 
     /// *2-1是为了加分割线，最后还有一个cancel，所以加1
     itemCount = (widget.list.length * 2 - 1) + 1;
-    var height = (itemCount * 50 + 20).toDouble();
+    var height = ((widget.list.length+1) * 50 + 20).toDouble();
     var cancelContainer = Container(
         height: itemHeight,
         margin: EdgeInsets.only(left: 10, right: 10),

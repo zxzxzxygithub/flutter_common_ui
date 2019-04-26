@@ -18,6 +18,8 @@ class _BottomDialogTestState extends State<BottomDialogTest> {
                 context: context,
                 builder: (BuildContext context) {
                   var list = List();
+                  list.add('删除1');
+                  list.add('删除2');
                   list.add('删除');
                   return CommonBottomSheet(
                     //uses the custom alert dialog
