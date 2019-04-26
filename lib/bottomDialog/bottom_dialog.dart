@@ -74,11 +74,13 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
           }
           return getItemContainer(context, index);
         });
+
     var totalContainer = Container(
-//      color: Colors.transparent, // 底色
-      child: listview, height: height,
+      child: listview,
+      height: height,
       width: deviceWidth * 0.95,
     );
+
     var stack = Stack(
       alignment: Alignment.topCenter,
       children: <Widget>[
