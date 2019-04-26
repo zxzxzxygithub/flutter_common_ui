@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'inheritedwidget/testinheritedwidget.dart';
-
+import 'package:flutter_ui_common/bottomDialog/bottom_dialog_test.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: InheriedWidgetTester(),
+      home: BottomDialogTest(),
     );
   }
 }

@@ -67,7 +67,8 @@ class UndismissSharePopup extends StatelessWidget {
                         child: Text("底部面板,点击底部面板不消失"),
                       ),
                     ),
-                    onTap: () => false,
+                    onTap: () {
+                    },
                   );
                 },
               );
